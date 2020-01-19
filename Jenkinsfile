@@ -1,6 +1,7 @@
+properties([parameters([choice(choices: 'master\ntesting\ndeclarative', description: '', name: 'branch')])])
+
 pipeline {
    agent any
-   properties([parameters([choice(choices: 'master\ntesting\ndeclarative', description: '', name: 'branch')])])
    tools {
       // Install the Maven version configured as "M3" and add it to the path.
       maven "M3"

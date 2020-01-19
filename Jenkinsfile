@@ -1,5 +1,6 @@
 pipeline {
    agent any
+   properties([parameters([choice(choices: 'master\ntesting\ndeclarative', description: '', name: 'branch')])])
    tools {
       // Install the Maven version configured as "M3" and add it to the path.
       maven "M3"
@@ -8,7 +9,7 @@ pipeline {
       stage('Build') {
          steps {
             // Get some code from a GitHub repository
-            git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+            git url: 'https://github.com/jglick/simple-maven-project-with-tests.git', branch: "${params.branch}"
             // Run Maven on a Unix agent.
             sh "mvn -Dmaven.test.failure.ignore=true clean package"
             // To run Maven on a Windows agent, use

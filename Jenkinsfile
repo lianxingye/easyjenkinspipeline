@@ -1,4 +1,4 @@
-properties([parameters([choice(choices: 'master\ntesting\ndeclarative', description: '', name: 'branch')])])
+properties([parameters([choice(choices: 'master\ntestng\ndeclarative', description: '', name: 'branch')])])
 
 pipeline {
    agent any
